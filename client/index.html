@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopper</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .container {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-flow: wrap;
+        }
+
+        .box {
+            width: 20%;
+            height: 400px;
+            margin: 20px;
+            box-sizing: border-box;
+            font-size: 22px;
+            text-align: center;
+            border-color: limegreen;
+            border-style: solid;
+            min-width: 200px;
+        }
+
+        .box img {
+            height: 70%;
+            width: 100%;
+        }
+
+        .header {
+            height: 60px;
+            width: 100%;
+            border-bottom-color: limegreen;
+            border-bottom-style: solid;
+            border-bottom-width: 4px;
+        }
+
+        .header div {
+            background-color: limegreen;
+            position: absolute;
+            font-size: 40px;
+            color: white;
+            padding: 1px 30px;
+            top: 12px;
+            left: 40px;
+        }
+
+        .content {
+            width: 100%;
+            position: absolute;
+            top: 60px;
+            bottom: 0;
+        }
+
+        .fruit-price {
+            font-size: 30px;
+        }
+
+        .fruit-name {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden !important;
+            margin: 0 10px;
+        }
+
+        .add-to-cart {
+            background: limegreen;
+            margin: 10px 20px 20px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart {
+            overflow: hidden;
+            min-width: 260px;
+            float: left;
+            background-color: limegreen;
+            text-align: center;
+            color: white;
+            position: absolute;
+            bottom: 0;
+            right: 40px;
+            top: 0;
+        }
+
+        .fruit {
+            float: left;
+            width: calc(100% - 300px);
+        }
+
+        .cart-total {
+            width: 80%;
+            float: right;
+            border-top-color: white;
+            border-top-style: solid;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        .cart-total div {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .confirm {
+            padding: 3px;
+            background-color: aquamarine;
+            border-radius: 6px;
+            color: black;
+            font-size: 26px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .cartItem {
+            background-color: darkseagreen;
+            max-width: 260px;
+            height: 80px;
+            padding-left: 20px;
+        }
+
+        .cartItem img {
+            height: 60px;
+            width: 80px;
+            float: left;
+        }
+
+        .cartItem div:not(.cart-item-total) {
+            float: left;
+            height: 20px;
+            width: 20px;
+            margin-top: 35px;
+        }
+
+        .cart-item-change {
+            float: left;
+
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .cart-item-total {
+            height: 20px;
+            text-align: left;
+            color: black;
+        }
+
+        .cart-item-total .delete {
+            float: right;
+            padding-right: 10px;
+            cursor: pointer;
+        }
+
+        .delete {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="header">
+            <div>Fruit</div>
+        </div>
+        <div class="content">
+            <div class="fruit">
+                <div class="container">
+                </div>
+            </div>
+            <div class="cart">
+                <div>Shopping Cart</div>
+                <div><span>0</span> Items</div>
+                <div class="cart-items">
+                </div>
+                <div class="cart-total">
+                    <div>
+                        Total: $<span>0.00</span>
+                    </div>
+                    <div class="empty-cart">Empty Cart</div>
+                    <div class="confirm">Confirm Purchase</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+
+</html>

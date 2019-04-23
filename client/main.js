@@ -56,6 +56,7 @@ emptyCartElem.onclick = emptyCart;
 const confirmPurchaseElm = document.querySelector('.confirm');
 confirmPurchaseElm.onclick = confirmPurchase;
 
+// Generate the main view
 (() => {
     data.forEach(fruit => {
         const fBox = document.createElement('div');
@@ -82,12 +83,15 @@ confirmPurchaseElm.onclick = confirmPurchase;
     });
 })();
 
+// Add item to cart
 function addToCart() {
     const fruitId = this.getAttribute('fruit-id');
+    // Cjeck for: already in the cart
     if (cartItemElement.querySelector(`[fruit-id=${fruitId}]`)) {
         alert('Item already in the Cart.');
         return;
     }
+    // Check for: no more items in stock
     if(getFruit(fruitId).quantityRemaining === 0){
         let fruitName = getFruit(fruitId).itemName;
         fruitName = fruitName.charAt(0).toUpperCase() + fruitName.slice(1);
@@ -98,6 +102,7 @@ function addToCart() {
     generateCartItem(fruitId);
 }
 
+// Generate added item in the cart
 function generateCartItem(fruitId) {
     const fruit = getFruit(fruitId);
 
@@ -146,11 +151,13 @@ function generateCartItem(fruitId) {
     updateCartTotal();
 }
 
+// Increment item amount in the cart
 function incrementItem() {
     const fruitId = this.parentElement.getAttribute('fruit-id');
     const totalItemsEl = this.parentElement.querySelector('.item-amount');
     let fruit = getFruit(fruitId);
 
+    // Check for: max available amount added
     if (cartItems[fruitId].quant === fruit.quantityRemaining) {
         return;
     }
@@ -160,11 +167,13 @@ function incrementItem() {
     updateItemInCartTotal(cartItems[fruitId], totalItemsEl);
 }
 
+// Decrement item amount in the cart
 function decrementItem() {
     const fruitId = this.parentElement.getAttribute('fruit-id');
     const totalItemsEl = this.parentElement.querySelector('.item-amount');
     let fruit = getFruit(fruitId);
 
+    // Check for: not less than 0
     if (cartItems[fruitId].quant === 0) {
         return;
     }
@@ -174,12 +183,14 @@ function decrementItem() {
     updateItemInCartTotal(cartItems[fruitId], totalItemsEl);
 }
 
+// Determin which item to delete from cart
 function selectToDeleteFromCart() {
     const fruitId = this.parentElement.parentElement.getAttribute('fruit-id');
 
     deleteItemFromCart(fruitId);
 }
 
+// Remove item from cart
 function deleteItemFromCart(fruitId) {
     cartItems.totalItems -= 1;
     const cartItemElm = document.querySelector(`.cartItem[fruit-id=${fruitId}]`);
@@ -191,12 +202,14 @@ function deleteItemFromCart(fruitId) {
     updateCartTotal();
 }
 
+// Get Fruit object from list
 function getFruit(fruitId) {
     return data.find(el => {
         return el.itemId === fruitId;
     });
 }
 
+// Update view in cart
 function updateItemInCartTotal(item, totalItemsEl) {
     totalItemsEl.innerHTML = item.quant;
     totalItemsEl.parentElement.querySelector('.total-item-value').innerHTML = item.quant * item.price;
@@ -204,6 +217,7 @@ function updateItemInCartTotal(item, totalItemsEl) {
     updateCartTotal()
 }
 
+// Update view of total in cart
 function updateCartTotal() {
     cartItems.totalPrice = 0.00;
     Object.keys(cartItems).map(item => {
@@ -217,6 +231,7 @@ function updateCartTotal() {
     cartTotalItems.innerHTML = document.getElementsByClassName('cartItem').length;
 }
 
+// Remove all items from cart
 function emptyCart() {
     Object.keys(cartItems).map(item => {
         if (!cartItems[item].hasOwnProperty('price')) {
@@ -231,6 +246,7 @@ function emptyCart() {
     }
 }
 
+// Confirm purchase, update amounts in stock and clear the cart
 function confirmPurchase() {
     if (cartItems.totalItems === 0) {
         return;

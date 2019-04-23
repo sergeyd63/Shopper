@@ -1,4 +1,4 @@
-# Cleaner
+# Shopper
 
 # Environment set up
 
@@ -12,6 +12,6 @@ npm install
 npm run start
 ```
 
-# Client
+# Run From
 
 [Localhost](http://localhost:4040/)

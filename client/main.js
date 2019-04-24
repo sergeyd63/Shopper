@@ -159,6 +159,7 @@ function incrementItem() {
 
     // Check for: max available amount added
     if (cartItems[fruitId].quant === fruit.quantityRemaining) {
+        alert('Maximum in stock reached.');
         return;
     }
 

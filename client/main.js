@@ -171,7 +171,6 @@ function incrementItem() {
 function decrementItem() {
     const fruitId = this.parentElement.getAttribute('fruit-id');
     const totalItemsEl = this.parentElement.querySelector('.item-amount');
-    let fruit = getFruit(fruitId);
 
     // Check for: not less than 0
     if (cartItems[fruitId].quant === 0) {
@@ -212,7 +211,7 @@ function getFruit(fruitId) {
 // Update view in cart
 function updateItemInCartTotal(item, totalItemsEl) {
     totalItemsEl.innerHTML = item.quant;
-    totalItemsEl.parentElement.querySelector('.total-item-value').innerHTML = item.quant * item.price;
+    totalItemsEl.parentElement.querySelector('.total-item-value').innerHTML = (item.quant * item.price).toFixed(2);
 
     updateCartTotal()
 }
@@ -224,10 +223,10 @@ function updateCartTotal() {
         if (!cartItems[item].hasOwnProperty('price')) {
             return
         }
-        cartItems.totalPrice += cartItems[item].price * cartItems[item].quant;
+        cartItems.totalPrice += (cartItems[item].price * cartItems[item].quant);
     });
 
-    cartTotal.innerHTML = cartItems.totalPrice;
+    cartTotal.innerHTML = cartItems.totalPrice.toFixed(2);
     cartTotalItems.innerHTML = document.getElementsByClassName('cartItem').length;
 }
 

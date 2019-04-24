@@ -55,6 +55,11 @@
             left: 40px;
         }
 
+        .shopping-cart-header {
+            font-size: 30px;
+            font-weight: 600;
+        }
+
         .content {
             width: 100%;
             position: absolute;
@@ -78,6 +83,7 @@
             margin: 10px 20px 20px 20px;
             border-radius: 5px;
             cursor: pointer;
+            user-select: none;
         }
 
         .cart {
@@ -120,6 +126,7 @@
             font-size: 26px;
             text-align: center;
             cursor: pointer;
+            user-select: none;
         }
 
         .cartItem {
@@ -144,7 +151,7 @@
 
         .cart-item-change {
             float: left;
-
+            user-select: none;
             background-color: white;
             color: black;
             font-size: 16px;
@@ -180,7 +187,7 @@
                 </div>
             </div>
             <div class="cart">
-                <div>Shopping Cart</div>
+                <div class="shopping-cart-header">Shopping Cart</div>
                 <div><span>0</span> Items</div>
                 <div class="cart-items">
                 </div>
